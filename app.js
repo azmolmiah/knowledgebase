@@ -1,8 +1,24 @@
 const express = require("express");
 const path = require("path");
+const mongoose = require("mongoose");
+
+// Connect to database
+mongoose.connect("mongodb://localhost/nodekb");
+let db = mongoose.connection;
+// Check for db errors
+db.on("error", err => {
+  console.log(err);
+});
+// Check connection
+db.once("open", () => {
+  console.log("Connected ot MongoDB");
+});
 
 // Init app
 const app = express();
+
+// Bring in models
+let Article = require("./models/articles");
 
 // Load view engine
 app.set("views", path.join(__dirname, "views"));
@@ -10,29 +26,15 @@ app.set("view engine", "pug");
 
 // home route
 app.get("/", (req, res) => {
-  let articles = [
-    {
-      id: 1,
-      title: "Article One",
-      author: "Azmol Miah",
-      body: "This is article one"
-    },
-    {
-      id: 2,
-      title: "Article Two",
-      author: "Whoever Miah",
-      body: "This is article two"
-    },
-    {
-      id: 3,
-      title: "Article Thre",
-      author: "Azmol Miah",
-      body: "This is article three"
+  Article.find({}, (err, articles) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("index", {
+        title: "Articles",
+        articles: articles
+      });
     }
-  ];
-  res.render("index", {
-    title: "Articles",
-    articles: articles
   });
 });
 
