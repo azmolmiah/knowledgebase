@@ -8,10 +8,38 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
-// Sent to browser or homepage route
+// home route
 app.get("/", (req, res) => {
-  res.render("Index", {
-    title: "Articles"
+  let articles = [
+    {
+      id: 1,
+      title: "Article One",
+      author: "Azmol Miah",
+      body: "This is article one"
+    },
+    {
+      id: 2,
+      title: "Article Two",
+      author: "Whoever Miah",
+      body: "This is article two"
+    },
+    {
+      id: 3,
+      title: "Article Thre",
+      author: "Azmol Miah",
+      body: "This is article three"
+    }
+  ];
+  res.render("index", {
+    title: "Articles",
+    articles: articles
+  });
+});
+
+//Adding Articles Route
+app.get("/articles/add", (req, res) => {
+  res.render("add_article", {
+    title: "Add Article"
   });
 });
 
