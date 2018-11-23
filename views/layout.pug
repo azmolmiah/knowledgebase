@@ -15,11 +15,20 @@ html
                 #navbarsExampleDefault.collapse.navbar-collapse
                     ul.navbar-nav.mr-auto          
                         li.nav-item
-                            a.nav-link(href='#') Home
+                            a.nav-link(href='/') Home
                         |
                         li.nav-item
-                            a.nav-link(href='#') Add Article
-                        | 
+                            a.nav-link(href='/articles/add') Add Article
+                        |
+                    ul.nav.navbar-nav.navbar-right
+                        if user
+                            li 
+                                a.nav-link(href='/users/logout') Logout
+                        else
+                            li
+                                a.nav-link(href="/users/register") Register
+                            li
+                                a.nav-link(href='/users/login') Login 
                                        
                     //- form.form-inline.my-2.my-lg-0
                     //- input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search')
@@ -27,6 +36,10 @@ html
                     //- button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
 
         .container
+            != messages('message', locals)
+            if errors
+                each error, i in errors
+                    div(class="mt-2 alert alert-danger") #{error.msg}
             block content
             br
             hr
