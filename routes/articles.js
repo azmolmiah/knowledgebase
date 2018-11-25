@@ -7,9 +7,16 @@ let Article = require("../models/article");
 let User = require("../models/user");
 
 //Adding Articles Route or different page
-router.get("/add", ensureAuthenticated, (req, res) => {
+router.get("/add", (req, res) => {
   res.render("add_article", {
     title: "Add Article"
+  });
+});
+
+//My Articles Route or different page
+router.get("/myarticles", ensureAuthenticated, (req, res) => {
+  res.render("my_articles", {
+    title: "My Articles"
   });
 });
 

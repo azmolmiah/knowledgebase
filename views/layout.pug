@@ -7,7 +7,7 @@ html
     body
         nav.navbar.navbar-expand-md.navbar-dark.bg-dark
             .container
-                a.navbar-brand(href='#') Knowledge Base
+                a.navbar-brand(href='/') Knowledge Base
                     
                 button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
                     span.navbar-toggler-icon
@@ -18,6 +18,8 @@ html
                             a.nav-link(href='/') Home
                         |
                         if user
+                            li.nav-item
+                                a.nav-link(href='/articles/myarticles') My Articles
                             li.nav-item
                                 a.nav-link(href='/articles/add') Add Article
                         |
@@ -31,10 +33,7 @@ html
                             li
                                 a.nav-link(href='/users/login') Login 
                                        
-                    //- form.form-inline.my-2.my-lg-0
-                    //- input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search')
-                    //- |           
-                    //- button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+                  
 
         .container
             != messages('message', locals)
