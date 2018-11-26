@@ -16,14 +16,17 @@ router.get("/add", (req, res) => {
 //My Articles Route or get my articles
 router.get("/myarticles", ensureAuthenticated, (req, res) => {
   Article.find({}, (err, articles) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("my_articles", {
-        title: "My Articles",
-        articles: articles
-      });
-    }
+    User.find({}, (err, user) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("my_articles", {
+          title: "My Articles",
+          articles: articles,
+          id: user._id
+        });
+      }
+    });
   });
 });
 
