@@ -14,14 +14,18 @@ html
             
                 #navbarsExampleDefault.collapse.navbar-collapse
                     ul.navbar-nav.mr-auto          
-                        li.nav-item
-                            a.nav-link(href='/') Home
-                        |
+                        //- li.nav-item
+                        //-     a.nav-link(href='/') Home
+                        //- |
                         if user
                             li.nav-item
                                 a.nav-link(href='/articles/myarticles') My Articles
                             li.nav-item
                                 a.nav-link(href='/articles/add') Add Article
+                            //- li.nav-item
+                            //-     a.nav-link(href='#') My Calls
+                            //- li.nav-item
+                            //-     a.nav-link(href='#') My Reminders
                         |
                     ul.nav.navbar-nav.navbar-right
                         if user
