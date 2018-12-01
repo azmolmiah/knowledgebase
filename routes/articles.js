@@ -57,7 +57,7 @@ router.post("/add", (req, res) => {
         return;
       } else {
         req.flash("success", "Article Added");
-        res.redirect("/");
+        res.redirect("/articles/myarticles");
       }
     });
   }
@@ -131,7 +131,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-// Acces Control
+// Access Control
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();

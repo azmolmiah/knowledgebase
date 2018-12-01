@@ -1,0 +1,23 @@
+extends layout
+
+block content
+        h1 #{title}
+        form(method='POST', action='/reminders/add')
+            #form-group.mb-2
+                label Caller Name:
+                input.form-control(name="name", type="text")
+            #form-group.mb-2
+                label Call Description:
+                textarea.form-control(name="body", type="text")
+            #form-group.mb-2
+                label action:
+                textarea.form-control(name="action", type="text")
+            .col-md-6.float-left
+                #form-group.mb-2
+                    label Set Date:
+                    input.form-control(name="date", type="date")
+            .col-md-6.float-right
+                #form-group.mb-2
+                    label Set Time:
+                    input.form-control(name="time", type="time")
+            input.btn.btn-primary.mt-2(type='submit', value="SUBMIT")

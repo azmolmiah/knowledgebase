@@ -3,10 +3,10 @@ extends layout
 block content
         h1 #{title}
         form(method='POST', action='/articles/add')
-            #form-group
+            #form-group.mb-2
                 label Title:
                 input.form-control(name="title", type="text")
-            #form-group
+            #form-group.mb-2
                 label body:
                 textarea.form-control(name="body", type="text")
             input.btn.btn-primary.mt-2(type='submit', value="SUBMIT")    

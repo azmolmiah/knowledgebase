@@ -7,7 +7,7 @@ html
     body
         nav.navbar.navbar-expand-md.navbar-dark.bg-dark
             .container
-                a.navbar-brand(href='/') Knowledge Base
+                a.navbar-brand(href='/') My Knowledge Base
                     
                 button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
                     span.navbar-toggler-icon
@@ -25,7 +25,7 @@ html
                             li.nav-item
                                 a.nav-link(href='/reminders/myreminders') My Reminders
                             li.nav-item
-                                a.nav-link(href='#') Add Reminder
+                                a.nav-link(href='/reminders/add') Add Reminder
                         |
                     ul.nav.navbar-nav.navbar-right
                         if user

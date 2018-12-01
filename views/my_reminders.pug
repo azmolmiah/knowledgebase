@@ -2,3 +2,30 @@ extends layout
 
 block content
     h1 #{title}
+        table.table.mt-4
+            thead
+                th(scope="col") 
+                    h5 Caller Name
+                th(scope="col") 
+                    h5 Description
+                th(scope="col") 
+                    h5 Action
+                th(scope="col") 
+                    h5 Date
+                th(scope="col") 
+                    h5 Time
+            tbody
+                each reminder, i in reminders
+                    tr
+                        td
+                            p.lead= reminder.name
+                        td
+                            p.lead= reminder.body
+                        td
+                            p.lead= reminder.action
+                        td
+                            p.lead= reminder.date
+                        td
+                            p.lead= reminder.time
+                //- h5= reminder.name
+                //- //- .float-right= article.date
