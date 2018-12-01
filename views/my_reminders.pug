@@ -5,7 +5,7 @@ block content
         table.table.mt-4
             thead
                 th(scope="col") 
-                    h5 Caller Name
+                    h5 Name
                 th(scope="col") 
                     h5 Description
                 th(scope="col") 
@@ -27,5 +27,9 @@ block content
                             p.lead= reminder.date
                         td
                             p.lead= reminder.time
+                        td
+                            a.btn.btn-default(href='#') Edit
+                        td
+                            a.btn.btn-danger(href='#') Delete
                 //- h5= reminder.name
                 //- //- .float-right= article.date

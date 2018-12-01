@@ -20,7 +20,7 @@ router.get("/myreminders", ensureAuthenticated, (req, res) => {
   });
 });
 
-//Including Add Reminder route
+//Including Add Reminder route or page
 router.get("/add", ensureAuthenticated, (req, res) => {
   res.render("add_reminder", {
     title: "Add Reminder"
