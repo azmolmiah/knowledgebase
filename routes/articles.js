@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const expressSearch = require("express-search");
 
 // Bring in Article models
 let Article = require("../models/article");

@@ -105,9 +105,11 @@ app.get("/", (req, res) => {
 // Route files
 let articles = require("./routes/articles");
 let users = require("./routes/users");
+let reminders = require("./routes/reminders");
 
 app.use("/articles", articles);
 app.use("/users", users);
+app.use("/reminders", reminders);
 
 //start server
 app.listen(3000, () => {
