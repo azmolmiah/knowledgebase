@@ -16,9 +16,13 @@ let reminderSchema = mongoose.Schema({
   },
   date: {
     type: String,
-    required: true
+    required: false
   },
   time: {
+    type: String,
+    required: false
+  },
+  author: {
     type: String,
     required: true
   }

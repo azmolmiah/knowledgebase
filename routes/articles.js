@@ -77,9 +77,9 @@ router.get("/edit/:id", ensureAuthenticated, (req, res) => {
   });
 });
 
-// Add submit POST route
+// Add Edit submit POST route
 router.post("/edit/:id", (req, res) => {
-  let article = [];
+  let article = {};
   article.title = req.body.title;
   // article.author = req.user._id;
   article.body = req.body.body;

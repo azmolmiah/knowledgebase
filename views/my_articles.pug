@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    h1 #{title}
+    h1.mt-4 #{title}
     form.form-inline.my-2(method="GET",action="/articles")
         input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search')
         button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search

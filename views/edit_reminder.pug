@@ -1,0 +1,23 @@
+extends layout
+
+block content
+        h1.mt-4 #{title}
+        form(method='POST', action='/reminders/edit/'+reminder.id)
+            #form-group.mb-2
+                label Caller Name:
+                input.form-control(name="name", type="text" value= reminder.name)
+            #form-group.mb-2
+                label Call Description:
+                textarea.form-control(name="body", type="text")= reminder.body
+            #form-group.mb-2
+                label action:
+                textarea.form-control(name="action", type="text")= reminder.action
+            .col-md-6.float-left
+                #form-group.mb-2
+                    label Set Date:
+                    input.form-control(name="date", type="date" value= reminder.date)
+            .col-md-6.float-right
+                #form-group.mb-2
+                    label Set Time:
+                    input.form-control(name="time", type="time" value= reminder.time)
+            input.btn.btn-primary.mt-2(type='submit', value="UPDATE")

@@ -26,8 +26,10 @@ db.on("error", err => {
 // Init app
 const app = express();
 
-// Bring in models
+// Bring in Article model
 let Article = require("./models/article");
+// Bring in User model
+let User = require("./models/user");
 
 // Load view engine
 app.set("views", path.join(__dirname, "views"));
