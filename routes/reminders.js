@@ -101,6 +101,29 @@ router.post("/edit/:id", (req, res) => {
   });
 });
 
+// Delete Article
+router.delete("/:id", (req, res) => {
+  if (!req.user._id) {
+    res.status(500).send();
+  }
+  let query = { _id: req.params.id };
+
+  Reminder.findById(req.params.id, (err, reminder) => {
+    if (reminder.author != req.user._id) {
+      res.status(500).send();
+    } else {
+      Reminder.deleteOne(query, err => {
+        if (err) {
+          console.log(err);
+        } else {
+          req.flash("danger", "Reminder Deleted");
+          res.send("Deleted");
+        }
+      });
+    }
+  });
+});
+
 // Access Control
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {

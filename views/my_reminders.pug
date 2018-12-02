@@ -31,6 +31,5 @@ block content
                         td
                             a.btn.btn-default(href='/reminders/edit/'+reminder._id) Edit
                         td
-                            a.btn.btn-danger(href='#') Delete
-                //- h5= reminder.name
-                //- //- .float-right= article.date
+                            a.btn.btn-danger.delete(href='#', data-id= reminder._id) Delete
+        
