@@ -5,7 +5,7 @@ $(document).ready(() => {
     let url;
     let location;
     let windowLocation = window.location.pathname;
-    let spiltUrl = windowLocation.split("/");
+    const spiltUrl = windowLocation.split("/");
 
     if (spiltUrl[1] == "reminders") {
       url = "/reminders/";
@@ -19,7 +19,9 @@ $(document).ready(() => {
       type: "DELETE",
       url: url + id,
       success: () => {
-        alert("Deleted");
+        if (confirm("Are you sure?")) {
+        } else {
+        }
         window.location.href = location;
       },
       error: err => {
