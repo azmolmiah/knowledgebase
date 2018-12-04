@@ -46,11 +46,13 @@ router.post("/add", (req, res) => {
   } else {
     let article = new Article();
     let date = new Date();
+
     article.title = req.body.title;
     article.author = req.user._id;
     article.body = req.body.body;
     article.date =
       date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
     article.save(err => {
       if (err) {
         console.log(err);

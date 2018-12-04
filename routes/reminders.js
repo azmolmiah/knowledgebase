@@ -45,6 +45,7 @@ router.post("/add", ensureAuthenticated, (req, res) => {
     });
   } else {
     let reminder = new Reminder();
+
     reminder.name = req.body.name;
     reminder.body = req.body.body;
     reminder.action = req.body.action;

@@ -25,9 +25,9 @@ block content
                         td
                             p.lead= reminder.action
                         td
-                            p.lead= reminder.date
+                            p.lead.date= reminder.date
                         td
-                            p.lead= reminder.time
+                            p.lead.time= reminder.time
                         td
                             a.btn.btn-default(href='/reminders/edit/'+reminder._id) Edit
                         td

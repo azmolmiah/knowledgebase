@@ -21,6 +21,7 @@ $(document).ready(() => {
       success: () => {
         if (confirm("Are you sure?")) {
         } else {
+          // Abort
         }
         window.location.href = location;
       },
@@ -30,3 +31,19 @@ $(document).ready(() => {
     });
   });
 });
+
+// GET the time and date then alert
+const dates = document.getElementsByClassName("date");
+let dateInnerHTML;
+for (let i = 0; i < dates.length; i++) {
+  dateInnerHTML = dates[i].innerHTML
+    .split("-")
+    .reverse()
+    .join("-");
+  dates[i].innerHTML = dateInnerHTML;
+}
+
+const today = new Date();
+let date = today.getDate();
+let month = today.getMonth() + 1;
+let year = today.getFullYear();
