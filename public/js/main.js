@@ -33,17 +33,42 @@ $(document).ready(() => {
 });
 
 // GET the time and date then alert
-const dates = document.getElementsByClassName("date");
-let dateInnerHTML;
-for (let i = 0; i < dates.length; i++) {
-  dateInnerHTML = dates[i].innerHTML
-    .split("-")
-    .reverse()
-    .join("-");
-  dates[i].innerHTML = dateInnerHTML;
-}
-
+const dates = document.querySelectorAll("p.date");
+const times = document.querySelectorAll("p.time");
 const today = new Date();
+
+// Date
 let date = today.getDate();
 let month = today.getMonth() + 1;
 let year = today.getFullYear();
+let todaysDate;
+
+date < 10
+  ? (todaysDate = "0" + date + "/" + month + "/" + year)
+  : (todaysDate = date + "/" + month + "/" + year);
+
+let myDates;
+dates.forEach(date => {
+  myDates = date.innerHTML
+    .split("-")
+    .reverse()
+    .join("/");
+  date.innerHTML = myDates;
+});
+
+// Time
+let hourNow = today.getHours();
+let minutesNow = today.getMinutes();
+let currentTime = hourNow + ":" + minutesNow;
+let myCurrentTime;
+
+times.forEach(time => {
+  let splitTime = time.innerHTML.split(":");
+  let hourNumber = Number(splitTime[0]);
+  let minutesNumber = Number(splitTime[1]);
+  myCurrentTime = hourNumber + ":" + minutesNumber;
+});
+
+if (currentTime == myCurrentTime && todaysDate == myDates) {
+  console.log("Hello");
+}
