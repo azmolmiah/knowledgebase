@@ -48,24 +48,39 @@ function renderTime() {
     : (todaysDate = date + "/" + month + "/" + year);
 
   let myDates;
-  dates.forEach(date => {
-    myDates = date.innerHTML
+  // dates.forEach(date => {
+  //   myDates = date.innerHTML
+  //     .split("-")
+  //     .reverse()
+  //     .join("/");
+  //   date.innerHTML = myDates;
+  // });
+
+  for (let i = 0; i < dates.length; i++) {
+    myDates = dates[i].innerHTML
       .split("-")
       .reverse()
       .join("/");
-    date.innerHTML = myDates;
-  });
+    dates[i].innerHTML = myDates;
+  }
 
   let dayNumber;
   let monthNumber;
   let yearNumber;
 
-  dates.forEach(date => {
-    let splitDate = date.innerHTML.split("/");
+  // dates.forEach(date => {
+  //   let splitDate = date.innerHTML.split("/");
+  //   dayNumber = Number(splitDate[0]);
+  //   monthNumber = Number(splitDate[1]);
+  //   yearNumber = Number(splitDate[2]);
+  // });
+
+  for (let i = 0; i < dates.length; i++) {
+    let splitDate = dates[i].innerHTML.split("/");
     dayNumber = Number(splitDate[0]);
     monthNumber = Number(splitDate[1]);
     yearNumber = Number(splitDate[2]);
-  });
+  }
 
   // Time
   let hourNow = today.getHours();
@@ -73,16 +88,30 @@ function renderTime() {
   let hourNumber;
   let minutesNumber;
 
-  times.forEach(time => {
-    let splitTime = time.innerHTML.split(":");
+  // times.forEach(time => {
+  //   let splitTime = time.innerHTML.split(":");
+  //   hourNumber = Number(splitTime[0]);
+  //   minutesNumber = Number(splitTime[1]);
+  // });
+
+  for (let i = 0; i < times.length; i++) {
+    let splitTime = times[i].innerHTML.split(":");
     hourNumber = Number(splitTime[0]);
     minutesNumber = Number(splitTime[1]);
-  });
+    // console.log(times[i].parentElement.parentElement);
+  }
+
   let timer = setTimeout("renderTime()", 1000);
   if (dayNumber == date && monthNumber == month && yearNumber == year) {
     if (hourNumber == hourNow && minutesNumber == minutesNow) {
+      // const timebg = document.getElementsByClassName("time");
+
       clearTimeout(timer);
-      alert("Hello");
+      if (confirm(`You have a call at ${hourNumber}:${minutesNumber}`)) {
+      } else {
+      }
+    } else {
+      timer;
     }
   }
   timer;

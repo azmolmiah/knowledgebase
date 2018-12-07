@@ -17,7 +17,7 @@ block content
         tbody
         each reminder, i in reminders
             if reminder.author ==user.id
-                tr
+                tr.row
                     td
                         p.lead.name= reminder.name
                     td
