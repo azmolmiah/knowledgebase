@@ -42,7 +42,6 @@ function renderTime() {
   let date = today.getDate();
   let month = today.getMonth() + 1;
   let year = today.getFullYear();
-  let todaysDate;
 
   date < 10
     ? (todaysDate = "0" + date + "/" + month + "/" + year)
@@ -79,12 +78,13 @@ function renderTime() {
     hourNumber = Number(splitTime[0]);
     minutesNumber = Number(splitTime[1]);
   });
+  let timer = setTimeout("renderTime()", 1000);
   if (dayNumber == date && monthNumber == month && yearNumber == year) {
     if (hourNumber == hourNow && minutesNumber == minutesNow) {
-      clearTimeout("renderTime()");
-      console.log("Hello");
+      clearTimeout(timer);
+      alert("Hello");
     }
   }
-  setTimeout("renderTime()", 1000);
+  timer;
 }
 renderTime();
