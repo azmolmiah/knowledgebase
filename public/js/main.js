@@ -33,85 +33,59 @@ $(document).ready(() => {
 });
 
 // // GET the time and date then alert
+const dates = document.querySelectorAll("p.date");
+const times = document.querySelectorAll("p.time");
+const today = new Date();
+
+// Current Date
+let date = today.getDate();
+let month = today.getMonth() + 1;
+let year = today.getFullYear();
+let myDates;
+// Add zero infront of day
+date < 10
+  ? (todaysDate = "0" + date + "/" + month + "/" + year)
+  : (todaysDate = date + "/" + month + "/" + year);
+// Reverse my dates
+for (let i = 0; i < dates.length; i++) {
+  myDates = dates[i].innerHTML
+    .split("-")
+    .reverse()
+    .join("/");
+  dates[i].innerHTML = myDates;
+}
+// Table Dates
+let dayNumber;
+let monthNumber;
+let yearNumber;
+// Parse dates into number
+for (let i = 0; i < dates.length; i++) {
+  let splitDate = dates[i].innerHTML.split("/");
+  dayNumber = Number(splitDate[0]);
+  monthNumber = Number(splitDate[1]);
+  yearNumber = Number(splitDate[2]);
+}
+
+// Time
+let hourNow = today.getHours();
+let minutesNow = today.getMinutes();
+let myTimes;
+
+for (let i = 0; i < times.length; i++) {
+  myTimes = times[i];
+}
+
 function renderTime() {
-  const dates = document.querySelectorAll("p.date");
-  const times = document.querySelectorAll("p.time");
-  const today = new Date();
-
-  // Date
-  let date = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
-
-  date < 10
-    ? (todaysDate = "0" + date + "/" + month + "/" + year)
-    : (todaysDate = date + "/" + month + "/" + year);
-
-  let myDates;
-  // dates.forEach(date => {
-  //   myDates = date.innerHTML
-  //     .split("-")
-  //     .reverse()
-  //     .join("/");
-  //   date.innerHTML = myDates;
-  // });
-
-  for (let i = 0; i < dates.length; i++) {
-    myDates = dates[i].innerHTML
-      .split("-")
-      .reverse()
-      .join("/");
-    dates[i].innerHTML = myDates;
-  }
-
-  let dayNumber;
-  let monthNumber;
-  let yearNumber;
-
-  // dates.forEach(date => {
-  //   let splitDate = date.innerHTML.split("/");
-  //   dayNumber = Number(splitDate[0]);
-  //   monthNumber = Number(splitDate[1]);
-  //   yearNumber = Number(splitDate[2]);
-  // });
-
-  for (let i = 0; i < dates.length; i++) {
-    let splitDate = dates[i].innerHTML.split("/");
-    dayNumber = Number(splitDate[0]);
-    monthNumber = Number(splitDate[1]);
-    yearNumber = Number(splitDate[2]);
-  }
-
-  // Time
-  let hourNow = today.getHours();
-  let minutesNow = today.getMinutes();
-  let hourNumber;
-  let minutesNumber;
-
-  // times.forEach(time => {
-  //   let splitTime = time.innerHTML.split(":");
-  //   hourNumber = Number(splitTime[0]);
-  //   minutesNumber = Number(splitTime[1]);
-  // });
-
-  for (let i = 0; i < times.length; i++) {
-    let splitTime = times[i].innerHTML.split(":");
-    hourNumber = Number(splitTime[0]);
-    minutesNumber = Number(splitTime[1]);
-    // console.log(times[i].parentElement.parentElement);
-  }
-
   let timer = setTimeout("renderTime()", 1000);
   if (dayNumber == date && monthNumber == month && yearNumber == year) {
-    if (hourNumber == hourNow && minutesNumber == minutesNow) {
-      // const timebg = document.getElementsByClassName("time");
-
+    if (myTimes.innerHTML == hourNow + ":" + minutesNow) {
       clearTimeout(timer);
-      if (confirm(`You have a call at ${hourNumber}:${minutesNumber}`)) {
+      if (confirm(`You have a call at ${hourNow}:${minutesNow}`)) {
+        myTimes.parentElement.parentElement.style.backgroundColor =
+          "rgba(255, 0, 0, 0.4)";
       } else {
+        myTimes.parentElement.parentElement.style.backgroundColor = "";
       }
-    } else {
-      timer;
     }
   }
   timer;
