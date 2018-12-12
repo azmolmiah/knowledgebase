@@ -38,9 +38,9 @@ const times = document.querySelectorAll("p.time");
 const today = new Date();
 
 // Current Date
-let date = today.getDate();
-let month = today.getMonth() + 1;
-let year = today.getFullYear();
+const date = today.getDate();
+const month = today.getMonth() + 1;
+const year = today.getFullYear();
 let myDates;
 // Add zero infront of day
 date < 10
@@ -67,27 +67,21 @@ for (let i = 0; i < dates.length; i++) {
 }
 
 // Time
-let hourNow = today.getHours();
-let minutesNow = today.getMinutes();
-let myTimes;
+const hourNow = today.getHours();
+const minutesNow = today.getMinutes();
 
-for (let i = 0; i < times.length; i++) {
-  myTimes = times[i];
-}
+// Timer loop
 
-function renderTime() {
-  let timer = setTimeout("renderTime()", 1000);
-  if (dayNumber == date && monthNumber == month && yearNumber == year) {
-    if (myTimes.innerHTML == hourNow + ":" + minutesNow) {
-      clearTimeout(timer);
-      if (confirm(`You have a call at ${hourNow}:${minutesNow}`)) {
-        myTimes.parentElement.parentElement.style.backgroundColor =
+let checkTime = function() {
+  for (let i = 0; i < times.length; i++) {
+    if (dayNumber == date && monthNumber == month && yearNumber == year) {
+      if (times[i].innerHTML == hourNow + ":" + minutesNow) {
+        times[i].parentElement.parentElement.style.backgroundColor =
           "rgba(255, 0, 0, 0.4)";
       } else {
-        myTimes.parentElement.parentElement.style.backgroundColor = "";
+        times[i].parentElement.parentElement.style.backgroundColor = "";
       }
     }
   }
-  timer;
-}
-renderTime();
+};
+setTimeout(checkTime, 1000);

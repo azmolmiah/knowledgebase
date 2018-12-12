@@ -17,7 +17,7 @@ block content
         tbody
         each reminder, i in reminders
             if reminder.author ==user.id
-                tr
+                tr#parent
                     td
                         p.lead.name= reminder.name
                     td
@@ -25,9 +25,9 @@ block content
                     td
                         p.lead= reminder.action
                     td
-                        p.lead.date= reminder.date
+                        p.date= reminder.date
                     td
-                        p.lead.time= reminder.time
+                        p.time= reminder.time
                     td
                         a.btn.btn-default(href='/reminders/edit/'+reminder._id) Edit
                     td
